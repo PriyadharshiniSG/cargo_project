@@ -1,0 +1,84 @@
+/* .blue-bg{
+  position: fixed; 
+  background-image: url("../../assets/images/cargologo.jpg");
+  background-size: cover;
+  background-color: #58aff6;
+  top: 0;
+  height: 25%;
+  width: 100%;
+  overflow-x: hidden;
+} */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+.button{
+  margin: 2.5rem;
+  padding: 0;
+  display: flex;
+  height: 5vh;
+  align-items: right;
+  justify-content: right;
+  background:#fff;
+}
+p {
+    align-items: center;
+    justify-content: center;
+    margin: 2.5rem;
+    font-family: 'Fredoka One', sans-serif;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+img{
+    height: 25vh;
+    width: 50;
+    align-content:flex-start;
+    justify-content: flex-start;
+}
+.container {
+    height: 150px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  width: 100%;
+ 
+}
+span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+span a:before,
+span a:after{
+  position: absolute;
+  content: "LOGIN";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+span a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}

@@ -1,0 +1,138 @@
+<div class="card m-3">
+  <div class="card1">
+    <div class="text-center">
+      <h1>Booking Information</h1>
+    </div>
+    <br />
+    <div class="card-body">
+      <form
+        action="http://localhost:8000/postquery"
+        method="post"
+        [formGroup]="bookingForm"
+        (ngSubmit)="book(this.bookingForm.value)"
+      >
+        <div class="form-group">
+          <label>Departure Place</label>
+          <input
+            type="text"
+            formControlName="departure"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': f.departure.touched && f.departure.errors
+            }"
+          />
+          <div
+            *ngIf="f.departure.touched && f.departure.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.departure.errors.required">
+              Departure place is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-5">
+          <label>Destination Place</label>
+          <input
+            type="text"
+            formControlName="destination"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': f.destination.touched && f.destination.errors
+            }"
+          />
+          <div
+            *ngIf="f.destination.touched && f.destination.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.destination.errors.required">
+              Destination Place is required
+            </div>
+          </div>
+        </div>
+        <h1>Personal details</h1>
+        <div class="form-group col-5">
+          <label>Full Name</label>
+          <input
+            type="text"
+            formControlName="fullName"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': f.fullName.touched && f.fullName.errors
+            }"
+          />
+          <div
+            *ngIf="f.fullName.touched && f.fullName.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.fullName.errors.required">full Name is required</div>
+          </div>
+        </div>
+        <div class="form-group col">
+          <label>Email</label>
+          <input
+            type="text"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }"
+          />
+          <div
+            *ngIf="f.email.touched && f.email.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label>Phone number</label>
+            <input
+              type="phonenumber"
+              formControlName="phonenumber"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': f.phonenumber.touched && f.phonenumber.errors
+              }"
+            />
+            <div
+              *ngIf="f.phonenumber.touched && f.phonenumber.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.phonenumber.errors.required">
+                Phonenumber is required
+              </div>
+              <div *ngIf="f.phonenumber.errors.pattern">
+                <div *ngIf="f.phonenumber.errors.minlength">
+                  <div *ngIf="f.phonenumber.errors.maxlength">
+                    > Phonenumber must have 10 numbers
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-primary mr-1"
+            [disabled]="!bookingForm.valid"
+          >
+            Book now
+          </button>
+          <button class="btn btn-secondary" type="reset" (click)="onReset()">
+            Cancel
+          </button>
+          <!-- <button
+              class="btn btn-primary mr-1"
+              (click)="login(this.registerForm.value)"
+            >
+              GET
+            </button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

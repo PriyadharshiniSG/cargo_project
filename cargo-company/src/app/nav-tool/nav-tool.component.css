@@ -1,0 +1,38 @@
+  .bar{
+      background-image: url("../../assets/images/cargo-front-img.jpeg");
+      /* background-attachment: fixed;
+      border-image-width: 100%; */
+      background-size: cover;
+      height: 100%;
+  }
+ ul li{
+     display:inline-block;
+     position:relative;
+      padding:50px;
+  }
+  p {
+      Position: Sticky;
+      align-content: center;
+      display: inline-block;
+      padding: 8vh;
+      font-size: 2.5rem;
+      font-weight: bolder;
+      font-family: cursive;
+      color: white;
+ }
+
+  a{
+      position: relative;
+     text-decoration: none;
+     color: black;
+     font-weight: bolder;
+     
+  }
+  a:hover{
+      color:whitesmoke;
+      box-shadow: 5px;
+  }
+  ul{
+      float:right
+  }
+  

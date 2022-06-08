@@ -1,3 +1,4 @@
+<app-usernav></app-usernav>
 <div class="card m-3">
   <div class="card1">
     <div class="text-center">
@@ -25,7 +26,7 @@
             *ngIf="f.departure.touched && f.departure.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="f.departure.errors.required">
+            <div *ngIf="f.departure.errors.required" class="alert alert-danger">
               Departure place is required
             </div>
           </div>
@@ -44,7 +45,10 @@
             *ngIf="f.destination.touched && f.destination.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="f.destination.errors.required">
+            <div
+              *ngIf="f.destination.errors.required"
+              class="alert alert-danger"
+            >
               Destination Place is required
             </div>
           </div>
@@ -64,7 +68,9 @@
             *ngIf="f.fullName.touched && f.fullName.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="f.fullName.errors.required">full Name is required</div>
+            <div *ngIf="f.fullName.errors.required" class="alert alert-danger">
+              full Name is required
+            </div>
           </div>
         </div>
         <div class="form-group col">
@@ -79,8 +85,10 @@
             *ngIf="f.email.touched && f.email.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="f.email.errors.required">Email is required</div>
-            <div *ngIf="f.email.errors.email">
+            <div *ngIf="f.email.errors.required" class="alert alert-danger">
+              Email is required
+            </div>
+            <div *ngIf="f.email.errors.email" class="alert alert-danger">
               Email must be a valid email address
             </div>
           </div>
@@ -100,12 +108,18 @@
               *ngIf="f.phonenumber.touched && f.phonenumber.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.phonenumber.errors.required">
+              <div
+                *ngIf="f.phonenumber.errors.required"
+                class="alert alert-danger"
+              >
                 Phonenumber is required
               </div>
               <div *ngIf="f.phonenumber.errors.pattern">
                 <div *ngIf="f.phonenumber.errors.minlength">
-                  <div *ngIf="f.phonenumber.errors.maxlength">
+                  <div
+                    *ngIf="f.phonenumber.errors.maxlength"
+                    class="alert alert-danger"
+                  >
                     > Phonenumber must have 10 numbers
                   </div>
                 </div>
@@ -120,7 +134,7 @@
             class="btn btn-primary mr-1"
             [disabled]="!bookingForm.valid"
           >
-            Book now
+            Request Booking
           </button>
           <button class="btn btn-secondary" type="reset" (click)="onReset()">
             Cancel

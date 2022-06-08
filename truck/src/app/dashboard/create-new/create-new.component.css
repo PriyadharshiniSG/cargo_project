@@ -1,0 +1,21 @@
+agm-map{
+    height: 600px;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    background: #CCC;
+    
+}
+
+@media (min-width: 576px){ 
+    .dialogWidth{
+        min-width: 95% !important;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .dialogWidth{
+        min-width: 340px !important;
+    }
+}

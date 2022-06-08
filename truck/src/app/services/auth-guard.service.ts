@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService {
+export class AuthGuardService implements CanActivate {
 
-  constructor() { }
+  constructor(private router: Router, private auth: AngularFireAuth) { }
+
+  canActivate(): boolean{
+    if(localStorage.getItem('tuid'))
+      return true;
+    else
+      return false;
+  }
+
 }

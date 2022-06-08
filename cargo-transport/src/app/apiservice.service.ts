@@ -16,4 +16,5 @@ export class ApiserviceService {
   retrieve(){
     return this.http.get('http://localhost:8000/getdata/');
   }
+ 
 }

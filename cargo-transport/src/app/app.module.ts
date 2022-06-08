@@ -17,8 +17,12 @@ import { AdminnavComponent } from './adminnav/adminnav.component';
 import { UsernavComponent } from './usernav/usernav.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
-import { DriverDetailsComponent } from './driver-details/driver-details.component';
 import { SignupDetailsComponent } from './signup-details/signup-details.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { CustomerStatusComponent } from './customer-status/customer-status.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,15 +39,18 @@ import { SignupDetailsComponent } from './signup-details/signup-details.componen
     UsernavComponent,
     BookingFormComponent,
     BookingDetailsComponent,
-    DriverDetailsComponent,
-    SignupDetailsComponent
+    SignupDetailsComponent,
+    CustomerStatusComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    CommonModule
     
   ],
   providers: [],

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./couchdb");
+const db = require("./couchDB");
 const app = express();
 const port = 8000;
 app.use(express.static("public"));
@@ -18,7 +18,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.post("/send", function (request, response) {
-  var register = {
+  var register1 = {
     title: request.body.title,
     fname: request.body.firstName,
     lname: request.body.lastName,
@@ -29,8 +29,24 @@ app.post("/send", function (request, response) {
     acceptTerms: request.body.acceptTerms,
     type: "user",
   };
-  //   console.log(`${fname}   ${lname}`)
-  db.cargo.insert(register);
+  console.log(register1);
+  db.cargo
+    .insert(register1)
+    .then((data) => {
+      console.log("posted");
+      console.log(data);
+      response.send(data);
+      // if (data.error) {
+      //   this.toastr.error(data.message);
+      // } else {
+      //   this.toastr.success("Data stored successfully!!");
+      //   console.log(data);
+      // }
+    })
+    .catch((err) => {
+      console.log("error");
+      response.send(err);
+    });
 
   console.log("Data Inserted..!!");
 });
@@ -44,9 +60,44 @@ app.post("/book", function (request, response) {
     password: request.body.password,
     phonenumber: request.body.phonenumber,
     type: "customer-booking",
+    status: "open",
+    user_id: request.body.user_id,
   };
   //   console.log(`${fname}   ${lname}`)
-  db.cargo.insert(bookcargo);
+  db.cargo
+    .insert(bookcargo)
+    .then((data) => {
+      console.log("posted");
+      response.send(data);
+    })
+    .catch((err) => {
+      console.log("error");
+      response.send(err);
+    });
+
+  console.log("Data Inserted..!!");
+});
+app.post("/contactUs", function (request, response) {
+  var contact = {
+    name: request.body.name,
+    phone: request.body.phone,
+    email: request.body.email,
+    // dob: request.body.dob,
+    subject: request.body.subject,
+    message: request.body.message,
+    type: "contact",
+  };
+  //   console.log(`${fname}   ${lname}`)
+  db.cargo
+    .insert(contact)
+    .then((data) => {
+      console.log("posted");
+      response.send(data);
+    })
+    .catch((err) => {
+      console.log("error");
+      response.send(err);
+    });
 
   console.log("Data Inserted..!!");
 });
@@ -84,6 +135,7 @@ app.get("/getbookingdata", (request, response) => {
       console.log("error", err);
     });
 });
+
 app.listen(port, (err) => {
   if (err) {
     return console.log("something bad happened", err);

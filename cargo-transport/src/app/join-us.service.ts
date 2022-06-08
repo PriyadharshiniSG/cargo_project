@@ -26,12 +26,49 @@ export class JoinUsService {
     const url=this.endpoint+db;
     return this.http.post(url, doc, this.httpOptions)
   }
-  // get(db:String,doc: object){
-  //   const url=this.endpoint+doc+"/_all_docs?include-docs=true";
-  //   return this.http.get(url, doc, this.httpOptions)
-  // } 
-  // retrieve(id:any)
-  // {
-  //   return this.http.get<any>('http://localhost:8000/getdata/'+id);
-  // }
+  get(db:string, id:number): Observable<{}>{
+    const url = this.endpoint+db+id;
+    return this.http.get(url, this.httpOptions)
+  }
+  getData(type: string, id: any,email?:string) {
+    let url = this.endpoint + 'cargo-registration/_find';
+    let user:any;
+    let typedData:any=[]
+    if(email !== null){
+       typedData={
+        selector: {
+          type: type,
+          email: email
+          
+        }
+  
+      };
+    }
+    else{
+     typedData = {
+      selector: {
+        type: type,
+        user_id: id,
+        
+      }
+
+    };
+  }
+    return this.http.post(url, typedData, this.httpOptions)
+
+  }
+  updateData(changedValue:object, db: string, id: number, rev: number) {
+
+    const changeObj = changedValue;
+    const url = `${this.endpoint + db}/${id}?rev=${rev}`;
+    return this.http.put(url, changeObj, this.httpOptions);
+  }
+ getstatus(type:string){
+   let data = {
+     "keys": [type  ],
+      "include_docs":true
+    }
+    const url = this.endpoint + "cargo-registration/_design/filterbytype/_view/filterbytype" ;
+    return this.http.post(url,data,this.httpOptions)
+ }
 } 

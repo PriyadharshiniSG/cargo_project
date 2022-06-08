@@ -13,6 +13,8 @@ export class SignupDetailsComponent implements OnInit {
   constructor(private book: BookService, private router: Router) { }
 
   ngOnInit(): void {
+    localStorage.getItem("admin");     
+
     this.book.getallcustomers().subscribe(data=>{
       console.log('hmm',data)
       this.mydata = data;

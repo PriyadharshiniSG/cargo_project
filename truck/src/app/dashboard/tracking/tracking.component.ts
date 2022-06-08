@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-tracking',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackingComponent implements OnInit {
 
-  constructor() { }
+  
+  
+  search!: string;
+  order:any;
+  tracking:any;
 
-  ngOnInit(): void {
+  constructor(private api: ApiService) { }
+
+  ngOnInit() {
   }
+
+  track(){
+    if(this.search !== ''){
+      this.search = this.search.toUpperCase();
+      this.api.getNewOrderByOrderId(this.search)
+        .subscribe(res => {
+          this.order = res;
+           if(this.order.length === 0)
+           {
+            this.api.getOrderByOrderId(this.search)
+              .subscribe(ress => {
+                this.order = ress;
+              });
+           }
+        });
+      this.api.getTrackingInformation(this.search)
+        .subscribe(res => {
+          this.tracking = res;
+        });
+    }
+  }
+
 
 }

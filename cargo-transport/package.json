@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^11.0.9",
-    "@angular/cdk": "^11.2.13",
+    "@angular/cdk": "11.2.13",
     "@angular/common": "~11.0.0",
     "@angular/compiler": "~11.0.0",
     "@angular/core": "~11.0.0",
@@ -23,7 +23,7 @@
     "@angular/router": "~11.0.0",
     "@cloudant/cloudant": "^4.5.1",
     "body-parser": "^1.20.0",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "4.5.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "ngx-toastr": "^13.2.1",

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BookService } from '../book.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -13,7 +14,8 @@ export class BookingFormComponent implements OnInit {
   submitted = false;
   object = [];
   value: boolean = true;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient,private api:BookService, private router: Router) { }
+  user_id: string | null | undefined;
+  constructor(private formBuilder: FormBuilder, private http:HttpClient,private api:BookService, private router: Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
@@ -23,7 +25,8 @@ export class BookingFormComponent implements OnInit {
       email: ['',[ Validators.required, Validators.email]],
       phonenumber: ['', [ Validators.required,
         Validators.pattern("^[0-9]*$"),
-        Validators.minLength(10), Validators.maxLength(10)]]
+        Validators.minLength(10), Validators.maxLength(10)]],
+      user_id: localStorage.getItem("user")     
   });
 }
 
@@ -32,11 +35,13 @@ book(Formvalue: NgForm) {
   this.submitted = true;
 console.log(Formvalue);
 this.api.bookcargo(this.bookingForm.value).subscribe((data) => {
+  this.toastr.success("Successfully booked your cargo!!  Please wait for the further process");
+  // this.user_id =localStorage.getItem("user"),
   console.log(data);
-})
-alert("Successfully booked your cargo!!  Please wait for the further process");
+},rej=>{
+  this.toastr.error("Failed to Book");
+});
 
-// this.router.navigate(['']);
 }
 
 

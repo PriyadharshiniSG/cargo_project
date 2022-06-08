@@ -16,4 +16,5 @@ export class BookService {
   getallcustomers(){
     return this.http.get('http://localhost:8000/getdata/');
   }
+  
 }

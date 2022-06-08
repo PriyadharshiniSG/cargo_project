@@ -1,5 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {AgmCoreModule} from '@agm/core';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+
+// FireBase
+// import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+// import { environment } from '../environments/environment';
+
+// Material Imports
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +39,11 @@ import { LoginComponent } from './entry/login/login.component';
 import { SignupComponent } from './entry/signup/signup.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import { AuthGuardService } from './services/auth-guard.service';
+import { ApiService } from './services/api.service';
+import { HelperService } from './services/helper.service';
+import { AuthService } from './services/auth.service';
+import { SpinnerComponent } from './ui/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +58,48 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     LoginComponent,
     SignupComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFirestore,
+    AngularFireStorageModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatSnackBarModule,
+    FilterPipeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB6Mp7CXGfGt5peVHdZaSw8MR7L1BlXKNs',
+      libraries: ["places"]
+    }),
+    RouterModule.forRoot([
+      {path: '', component: HomeComponent},
+      {path: 'signin', component: LoginComponent},
+      {path: 'signup', component: SignupComponent},
+      {path: 'create-new', component: CreateNewComponent},
+      {path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService]},
+      {path: 'tracking', component: TrackingComponent},
+      {path: 'about-us', component: AboutUsComponent},
+      {path: 'contact-us', component: ContactUsComponent}
+    ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ApiService, HelperService, AuthGuardService, AuthService],
+  bootstrap: [AppComponent],
+  entryComponents: [CreateDialogComponent, CountriesComponent]
 })
 export class AppModule { }

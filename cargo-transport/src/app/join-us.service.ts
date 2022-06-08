@@ -20,7 +20,7 @@ export class JoinUsService {
       'Authorization': this.basicAuth
     })
   };
-  add(db:String,doc: object): Observable<{}> {
+  add(db:string,doc: object): Observable<{}> {
 
     console.log(doc);
     const url=this.endpoint+db;
@@ -32,7 +32,6 @@ export class JoinUsService {
   }
   getData(type: string, id: any,email?:string) {
     let url = this.endpoint + 'cargo-registration/_find';
-    let user:any;
     let typedData:any=[]
     if(email !== null){
        typedData={

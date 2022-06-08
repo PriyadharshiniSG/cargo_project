@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   object = [];
   value: boolean = true;
   evalu:any;
-  submit = false;
+  submitvals = false;
   constructor(private formBuilder: FormBuilder, private api:ApiserviceService, private http:HttpClient, private router: Router, private toastr: ToastrService,private apiserv:JoinUsService) { }
 
 
@@ -51,7 +51,6 @@ register(Formvalue: NgForm) {
     this.submitted = true;
   console.log(Formvalue);
   this.api.enroll(this.registerForm.value).subscribe((data) => {
-    // this.toastr.success("successful registration");
     console.log(data);
     let obj:any =[]
     obj= data;
@@ -64,13 +63,14 @@ register(Formvalue: NgForm) {
 
     }
   },rej=>{
-this.toastr.error("registration failed");
+    console.log(rej);
+    
+     this.toastr.error("registration failed");
   });
   
 
 }
 validateuser(){
-  // console.log(event);
   
   const evalu = this.registerForm.value['email']
 
@@ -78,27 +78,16 @@ validateuser(){
     console.log(response)
     if(response.docs.length >=1){
     this.toastr.error("email already exist");
-    this.submit =false
+    this.submitvals =false
     }
     else{
-      this.submit =true
+      this.submitvals =true
     }
   },err=>{
     console.error(err)
   })
 }
-// onSubmit() {
-//     this.submitted = true;
 
-//     // stop here if form is invalid
-//     if (this.registerForm.invalid) {
-//         return;
-//     }
-
-//     // display form values on success
-//     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-//     console.log(JSON.stringify(this.registerForm.value));
-// }
 onReset() {
     this.submitted = false;
     this.registerForm.reset();

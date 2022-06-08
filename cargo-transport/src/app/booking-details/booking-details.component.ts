@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { JoinUsService } from '../join-us.service';
@@ -24,16 +24,14 @@ export class BookingDetailsComponent implements OnInit {
    });
     this.fetchBookingData();
     
-    // this.filter("Booking Accepted")
   }
   
   onAccept(id:number,rev:number,status:string){
-    // if()
     this.api.get("cargo-registration/",id).subscribe((res:any)=>{
       console.log(res);
      res['status'] = status;
-        this.api.updateData(res,"cargo-registration/",id,rev).subscribe(res=>{
-      console.log(res);
+        this.api.updateData(res,"cargo-registration/",id,rev).subscribe(response=>{
+      console.log(response);
       
     this.fetchBookingData()
     },(rej:string)=>{
@@ -56,15 +54,10 @@ export class BookingDetailsComponent implements OnInit {
   filterinData:any;
   fetchBookingData(){
     this.book.getallBooking().subscribe(data=>{
-      // var length = data;
       this.obj=[]
       console.log('hmm',data)
       this.mydata = data;
       this.obj = this.mydata =this.mydata.docs;
-
-      // for (const iterator of this.mydata) {
-      //   this.obj.push(iterator);
-      // }
 
      
     })

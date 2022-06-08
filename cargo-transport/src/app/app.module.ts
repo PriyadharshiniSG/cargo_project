@@ -22,6 +22,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { CustomerStatusComponent } from './customer-status/customer-status.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CustomerStatusComponent } from './customer-status/customer-status.compo
     BookingFormComponent,
     BookingDetailsComponent,
     SignupDetailsComponent,
-    CustomerStatusComponent
+    CustomerStatusComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

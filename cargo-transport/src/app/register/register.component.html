@@ -159,19 +159,13 @@
           <button
             type="submit"
             class="btn btn-primary mr-1"
-            [disabled]="!submit"
+            [disabled]="!submitvals"
           >
             Register
           </button>
           <button class="btn btn-secondary" type="reset" (click)="onReset()">
             Cancel
           </button>
-          <!-- <button
-            class="btn btn-primary mr-1"
-            (click)="login(this.registerForm.value)"
-          >
-            GET
-          </button> -->
         </div>
       </form>
       <br />

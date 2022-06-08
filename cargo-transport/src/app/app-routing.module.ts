@@ -13,6 +13,7 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { SignupDetailsComponent } from './signup-details/signup-details.component';
 import { CustomerStatusComponent } from './customer-status/customer-status.component';
+import { LocationComponent } from './location/location.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'nav-tool', component: NavToolComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'booking-form', component: BookingFormComponent },
   { path: 'signup-details', component: SignupDetailsComponent },
   { path: 'customer-status', component: CustomerStatusComponent },
+  { path: 'location', component: LocationComponent },
 ];
 
 @NgModule({

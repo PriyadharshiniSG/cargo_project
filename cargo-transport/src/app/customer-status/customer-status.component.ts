@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { JoinUsService } from '../join-us.service';
-// import {} from './../booking-details/booking-details.component'
 @Component({
   selector: 'app-customer-status',
   templateUrl: './customer-status.component.html',
@@ -20,9 +19,9 @@ export class CustomerStatusComponent implements OnInit {
      this.obj=[]
      this.api.get("cargo-registration/", this.id1).subscribe((res:any)=>{
       console.log(res);
-      this.api.getData("customer-booking", this.id1).subscribe((res)=>{
-        console.log(res);
-        this.mydata = res;
+      this.api.getData("customer-booking", this.id1).subscribe((response)=>{
+        console.log(response);
+        this.mydata = response;
       this.mydata =this.mydata.docs;
       for (const iterator of this.mydata) {
         this.obj.push(iterator);

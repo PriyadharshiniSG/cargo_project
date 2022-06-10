@@ -6,12 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavToolComponent } from './nav-tool/nav-tool.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { FooterComponent } from './footer/footer.component';
-import { CargoTrackingComponent } from './cargo-tracking/cargo-tracking.component';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { AdminnavComponent } from './adminnav/adminnav.component';
 import { UsernavComponent } from './usernav/usernav.component';
@@ -29,12 +26,9 @@ import { LocationComponent } from './location/location.component';
     AppComponent,
     NavToolComponent,
     HomeComponent,
-    HeaderComponent,
     AboutUsComponent,
     RegisterComponent,
     LoginComponent,
-    FooterComponent,
-    CargoTrackingComponent,
     JoinUsComponent,
     AdminnavComponent,
     UsernavComponent,

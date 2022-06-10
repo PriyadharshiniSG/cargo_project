@@ -14,14 +14,18 @@
       >
         <div class="form-group">
           <label>Departure Place</label>
-          <input
-            type="text"
+          <select
+            name="departure"
             formControlName="departure"
             class="form-control"
-            [ngClass]="{
-              'is-invalid': f.departure.touched && f.departure.errors
-            }"
-          />
+          >
+            <option value="">Select location</option>
+
+            <option *ngFor="let locate of locationlist" [ngValue]="locate._id">
+              {{ locate.location }}
+            </option>
+          </select>
+
           <div
             *ngIf="f.departure.touched && f.departure.errors"
             class="invalid-feedback"
@@ -31,25 +35,26 @@
             </div>
           </div>
         </div>
-        <div class="form-group col-5">
+        <div class="form-group">
           <label>Destination Place</label>
-          <input
-            type="text"
+          <select
+            name="destination"
             formControlName="destination"
             class="form-control"
-            [ngClass]="{
-              'is-invalid': f.destination.touched && f.destination.errors
-            }"
-          />
+          >
+            <option value="">Select Destination</option>
+
+            <option *ngFor="let locate of locationlist" [ngValue]="locate._id">
+              {{ locate.location }}
+            </option>
+          </select>
+
           <div
-            *ngIf="f.destination.touched && f.destination.errors"
+            *ngIf="f.departure.touched && f.departure.errors"
             class="invalid-feedback"
           >
-            <div
-              *ngIf="f.destination.errors.required"
-              class="alert alert-danger"
-            >
-              Destination Place is required
+            <div *ngIf="f.departure.errors.required" class="alert alert-danger">
+              Destination place is required
             </div>
           </div>
         </div>
@@ -139,12 +144,6 @@
           <button class="btn btn-secondary" type="reset" (click)="onReset()">
             Cancel
           </button>
-          <!-- <button
-              class="btn btn-primary mr-1"
-              (click)="login(this.registerForm.value)"
-            >
-              GET
-            </button> -->
         </div>
       </form>
     </div>

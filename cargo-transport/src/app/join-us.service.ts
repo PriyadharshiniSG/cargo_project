@@ -33,7 +33,7 @@ export class JoinUsService {
   getData(type: string, id: any,email?:string) {
     let url = this.endpoint + 'cargo-registration/_find';
     let typedData:any=[]
-    if(email !== null){
+    if(email && email!== null && email.length !== 0){
        typedData={
         selector: {
           type: type,
@@ -64,10 +64,18 @@ export class JoinUsService {
   }
  getstatus(type:string){
    let data = {
-     "keys": [type  ],
+     "keys": [type ],
       "include_docs":true
     }
     const url = this.endpoint + "cargo-registration/_design/filterbytype/_view/filterbytype" ;
     return this.http.post(url,data,this.httpOptions)
  }
+ getviewType(id:number){
+  let data = {
+    "keys": id , 
+     "include_docs":true
+   }
+   const url = this.endpoint + "cargo-registration/_all_docs?include_docs=true" ;
+   return this.http.post(url,data,this.httpOptions)
+}
 } 

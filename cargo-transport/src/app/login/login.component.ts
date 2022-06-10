@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import {Router} from '@angular/router';
 import { ApiserviceService } from '../apiservice.service';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });  
-    // this.login(Formvalue:any);
   }
 get f() { return this.form.controls; }
 

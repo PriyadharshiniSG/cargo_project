@@ -3,7 +3,6 @@
   <form [formGroup]="statusForm" (ngSubmit)="filter(this.statusForm.value)">
     <label>Click to Filter details by Status</label>
     <select formControlName="stats" class="form-control" name="statusvalue">
-      <!-- <option [value]="i" *ngFor="let i of stats">{{i}}</option> -->
       <option value="All">All</option>
       <option value="open">Open</option>
       <option value="Booking Accepted">Booking Accepted</option>
@@ -13,8 +12,10 @@
     </select>
     <button>Search</button>
   </form>
-  <!-- <button (click)="filter(item._id)">View</button> -->
   <table class="table table-striped table-bordered border-primary" id="table">
+    <caption>
+      Customer Booking Details
+    </caption>
     <thead class="bg-light">
       <tr>
         <th>Departure Place</th>
@@ -26,12 +27,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of obj">
+      <tr *ngFor="let item of obj1">
         <td>
-          {{ item.departure }}
+          {{ item.departureData["location"] }}
         </td>
         <td>
-          {{ item.destination }}
+          {{ item.destinationData["location"] }}
         </td>
         <td>
           {{ item.fullName }}

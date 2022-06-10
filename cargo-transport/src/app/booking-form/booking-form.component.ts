@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BookService } from '../book.service';
+import { ApiserviceService} from '../apiservice.service'
 import { ToastrService } from 'ngx-toastr';
+import { JoinUsService } from '../join-us.service';
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -12,10 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 export class BookingFormComponent implements OnInit {
   bookingForm!: FormGroup;
   submitted = false;
-  object = [];
+  mydata:any;
+  locationlist:any = [];
   value: boolean = true;
   user_id: string | null | undefined;
-  constructor(private formBuilder: FormBuilder, private http:HttpClient,private api:BookService, private router: Router, private toastr:ToastrService) { }
+  temp: any;
+  sample: any;
+  constructor(private formBuilder: FormBuilder,private apiserv:JoinUsService, private http:HttpClient,private api:ApiserviceService, private router: Router, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
@@ -28,6 +32,23 @@ export class BookingFormComponent implements OnInit {
         Validators.minLength(10), Validators.maxLength(10)]],
       user_id: localStorage.getItem("user")     
   });
+  this.apiserv.getstatus("locate").subscribe(res=>{
+    console.log(res);
+   this.temp=res
+   this.sample=this.temp.rows
+   console.log(this.sample)
+    this.locationlist=[];
+    for(const element of this.sample){
+    this.locationlist.push(element.doc)
+
+    }
+  console.log(this.locationlist)
+
+    
+  },error=>{
+    console.log(error);
+    
+  });
 }
 
 get f() { return this.bookingForm.controls; }
@@ -39,6 +60,7 @@ this.api.bookcargo(this.bookingForm.value).subscribe((data) => {
   // this.user_id =localStorage.getItem("user"),
   console.log(data);
 },rej=>{
+  console.log(rej);
   this.toastr.error("Failed to Book");
 });
 

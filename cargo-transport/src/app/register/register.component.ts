@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { ApiserviceService } from '../apiservice.service';
 import { HttpClient } from '@angular/common/http';
-import { MustMatch } from './must-match.validator';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { JoinUsService } from '../join-us.service';
@@ -42,10 +41,8 @@ export class RegisterComponent implements OnInit {
   
 }
 
-get f() { return this.registerForm.controls; }
-// get title(){
-//   this.registerForm.get('title');
-// }
+get firstName() { return this.registerForm.value('firstName'); }
+
 
 register(Formvalue: NgForm) {
     this.submitted = true;

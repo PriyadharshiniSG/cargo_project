@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,11 @@ import { Router } from '@angular/router';
   templateUrl: './adminnav.component.html',
   styleUrls: ['./adminnav.component.css']
 })
-export class AdminnavComponent implements OnInit {
+export class AdminnavComponent  {
 
   constructor(private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  
   logout(){
     localStorage.clear();
     this.router.navigate(['/login'])

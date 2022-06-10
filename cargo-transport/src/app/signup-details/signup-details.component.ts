@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BookService } from '../book.service';
+import { ApiserviceService } from '../apiservice.service';
 @Component({
   selector: 'app-signup-details',
   templateUrl: './signup-details.component.html',
@@ -10,12 +9,12 @@ export class SignupDetailsComponent implements OnInit {
   mydata: any;
   obj:any=[];
 
-  constructor(private book: BookService, private router: Router) { }
+  constructor(private api: ApiserviceService) { }
 
   ngOnInit(): void {
     localStorage.getItem("admin");     
 
-    this.book.getallcustomers().subscribe(data=>{
+    this.api.getallcustomers().subscribe(data=>{
       console.log('hmm',data)
       this.mydata = data;
       this.mydata =this.mydata.docs;

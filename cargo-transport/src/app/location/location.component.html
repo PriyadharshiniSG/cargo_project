@@ -1,7 +1,7 @@
-<form [formGroup]="locationForm" (ngsubmit)="storing()">
+<form [formGroup]="locationForm" (ngSubmit)="storing()">
   <div class="form-group col-5">
     <label>location</label>
     <input type="location" formControlName="locate" class="form-control" />
-    <button class="btn btn-primary mr-1">Submit</button>
+    <button class="btn btn-primary mr-1" type="submit">Submit</button>
   </div>
 </form>

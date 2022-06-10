@@ -16,7 +16,6 @@ export class CustomerStatusComponent implements OnInit {
   destinationid =[];
   loading = false;
   constructor(private api:JoinUsService) { }
-
   ngOnInit(): void {
      this.id1 = localStorage.getItem("user");
      this.obj=[]
@@ -40,14 +39,11 @@ export class CustomerStatusComponent implements OnInit {
         },(rej:string)=>{
             console.log(rej);
           });
-      
       console.log(this.obj)
       },(rej:string)=>{
           console.log(rej);
         });
     }
-   
-   
   }
 
 

@@ -29,7 +29,6 @@ const routes: Routes = [
   { path: 'customer-status', component: CustomerStatusComponent },
   { path: 'location', component: LocationComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

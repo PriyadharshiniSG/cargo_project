@@ -21,7 +21,6 @@ export class JoinUsService {
     })
   };
   add(db:string,doc: object): Observable<{}> {
-
     console.log(doc);
     const url=this.endpoint+db;
     return this.http.post(url, doc, this.httpOptions)
@@ -38,9 +37,7 @@ export class JoinUsService {
         selector: {
           type: type,
           email: email
-          
         }
-  
       };
     }
     else{
@@ -48,13 +45,10 @@ export class JoinUsService {
       selector: {
         type: type,
         user_id: id,
-        
       }
-
     };
   }
     return this.http.post(url, typedData, this.httpOptions)
-
   }
   updateData(changedValue:object, db: string, id: number, rev: number) {
 

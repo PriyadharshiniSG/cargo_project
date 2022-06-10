@@ -43,12 +43,10 @@
             class="form-control"
           >
             <option value="">Select Destination</option>
-
             <option *ngFor="let locate of locationlist" [ngValue]="locate._id">
               {{ locate.location }}
             </option>
           </select>
-
           <div
             *ngIf="f.departure.touched && f.departure.errors"
             class="invalid-feedback"

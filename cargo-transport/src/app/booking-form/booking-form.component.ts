@@ -20,7 +20,6 @@ export class BookingFormComponent implements OnInit {
   temp: any;
   sample: any;
   constructor(private formBuilder: FormBuilder,private apiserv:JoinUsService, private http:HttpClient,private api:ApiserviceService, private router: Router, private toastr:ToastrService) { }
-
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
       departure: ['', Validators.required],
@@ -40,33 +39,25 @@ export class BookingFormComponent implements OnInit {
     this.locationlist=[];
     for(const element of this.sample){
     this.locationlist.push(element.doc)
-
     }
   console.log(this.locationlist)
-
-    
   },error=>{
     console.log(error);
     
   });
 }
-
 get f() { return this.bookingForm.controls; }
 book(Formvalue: NgForm) {
   this.submitted = true;
 console.log(Formvalue);
 this.api.bookcargo(this.bookingForm.value).subscribe((data) => {
   this.toastr.success("Successfully booked your cargo!!  Please wait for the further process");
-  // this.user_id =localStorage.getItem("user"),
   console.log(data);
 },rej=>{
   console.log(rej);
   this.toastr.error("Failed to Book");
 });
-
 }
-
-
 onReset() {
   this.submitted = false;
   this.bookingForm.reset();

@@ -8,7 +8,6 @@ import { JoinUsService } from '../join-us.service';
 })
 export class JoinUsComponent implements OnInit {
   formGroup! : FormGroup;
-
   record: any ={
     name:'',
     email:'',
@@ -16,7 +15,6 @@ export class JoinUsComponent implements OnInit {
     message:'',
   };
   constructor(private fb: FormBuilder, private api:JoinUsService) { }
-
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       name: [this.record.name],

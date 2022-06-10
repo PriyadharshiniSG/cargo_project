@@ -10,6 +10,4 @@ export class AppComponent {
   title = 'cargo-transport';
   form!: FormGroup;
   constructor (private fb: FormBuilder, private service: ApiserviceService){}
- 
-  
 }

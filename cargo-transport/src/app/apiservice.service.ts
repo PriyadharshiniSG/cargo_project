@@ -4,12 +4,8 @@ import { HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiserviceService {
-
   constructor(private http: HttpClient) { 
-    
     }
-  
- 
   enroll(formobject: any) {
     return this.http.post('http://localhost:8000/send/',formobject);
   }

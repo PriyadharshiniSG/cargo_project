@@ -20,7 +20,6 @@ export class LocationComponent implements OnInit {
       locate: [this.record.locate]
    });
    console.log(this.locationForm);
-   
   }
   storing(){
     this.locationForm.value['type']='locate'

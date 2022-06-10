@@ -20,7 +20,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { CustomerStatusComponent } from './customer-status/customer-status.component';
 import { LocationComponent } from './location/location.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +46,6 @@ import { LocationComponent } from './location/location.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CommonModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

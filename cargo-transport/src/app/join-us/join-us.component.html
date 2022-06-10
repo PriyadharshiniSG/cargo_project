@@ -1,11 +1,9 @@
 <app-nav-tool></app-nav-tool>
 <div class="join-us">
   <h1><span>How can we help..</span></h1>
-
   <h1>
     Please provide your information. We will contact you as soon as possible
   </h1>
-
   <div class="container">
     <form class="contact-form" [formGroup]="formGroup" (ngSubmit)="storing()">
       <input
@@ -25,7 +23,6 @@
         id="contact-form-text"
         placeholder="Your email"
       />
-
       <div class="help-block text-danger" *ngIf="email.touched">
         <span *ngIf="email.errors?.required"> Email is REQUIRED!!! </span>
       </div>
@@ -42,11 +39,9 @@
         id="contact-form-text"
         placeholder="Your message"
       ></textarea>
-
       <div class="help-block text-danger" *ngIf="message.touched">
         <span *ngIf="message.errors?.required"> Message is REQUIRED!!! </span>
       </div>
-
       <input type="submit" class="contact-form-btn" value="Send" />
     </form>
   </div>

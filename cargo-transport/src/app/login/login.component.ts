@@ -9,12 +9,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   form!: FormGroup;
   mydata: any;
   records: any = [];
   constructor(private formBuilder: FormBuilder, private apiservice:ApiserviceService, private router: Router, private toastr:ToastrService ) { }
-
   ngOnInit() {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,7 +20,6 @@ export class LoginComponent implements OnInit {
     });  
   }
 get f() { return this.form.controls; }
-
   login(Formvalue:any)
   { 
     if('admin.cargo@gmail.com' == Formvalue.email && 'admincargo' == Formvalue.password){
@@ -43,18 +40,13 @@ get f() { return this.form.controls; }
         }  
         
       }
-
       console.log(this.records);
     },rej=>{
       this.toastr.error("Failed to Login");
       console.log('Error',rej);
     })
-   
-      
       }
-     
     }
-      
     }
     
 

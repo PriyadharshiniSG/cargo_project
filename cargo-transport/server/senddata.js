@@ -13,7 +13,7 @@ app.use(
 );
 app.use(bodyParser.json());
 app.post("/send", function (request, response) {
-  var register1 = {
+  let register1 = {
     title: request.body.title,
     fname: request.body.firstName,
     lname: request.body.lastName,
@@ -39,7 +39,7 @@ app.post("/send", function (request, response) {
   console.log("Data Inserted..!!");
 });
 app.post("/book", function (request, response) {
-  var bookcargo = {
+  let bookcargo = {
     departure: request.body.departure,
     destination: request.body.destination,
     fullName: request.body.fullName,
@@ -66,7 +66,7 @@ app.post("/book", function (request, response) {
 
 app.get("/getdata", (request, response) => {
   console.log("retreived......", request.params);
-  var obj = {
+  let obj = {
     selector: {
       type: "user",
     },
@@ -83,7 +83,7 @@ app.get("/getdata", (request, response) => {
 });
 app.get("/getbookingdata", (request, response) => {
   console.log("retreived......", request.params);
-  var obj = {
+  let obj = {
     selector: {
       type: "customer-booking",
     },

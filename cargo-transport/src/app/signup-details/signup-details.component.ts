@@ -8,12 +8,9 @@ import { ApiserviceService } from '../apiservice.service';
 export class SignupDetailsComponent implements OnInit {
   mydata: any;
   obj:any=[];
-
   constructor(private api: ApiserviceService) { }
-
   ngOnInit(): void {
     localStorage.getItem("admin");     
-
     this.api.getallcustomers().subscribe(data=>{
       console.log('hmm',data)
       this.mydata = data;
@@ -24,5 +21,4 @@ export class SignupDetailsComponent implements OnInit {
      
     })
   }
-
 }

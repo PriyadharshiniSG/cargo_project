@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './nav-tool.component.html',
   styleUrls: ['./nav-tool.component.css']
 })
-export class NavToolComponent  {
-
-  
-
-}
+export class NavToolComponent  {}

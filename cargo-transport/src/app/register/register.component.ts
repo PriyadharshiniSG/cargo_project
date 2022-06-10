@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { JoinUsService } from '../join-us.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,17 +18,8 @@ export class RegisterComponent implements OnInit {
   evalu:any;
   submitvals = false;
   constructor(private formBuilder: FormBuilder, private api:ApiserviceService, private http:HttpClient, private router: Router, private toastr: ToastrService,private apiserv:JoinUsService) { }
-
-
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-        // title: ['', Validators.required],
-        // firstName: ['', Validators.required],
-        // lastName: ['', Validators.required],
-        // email: ['', [Validators.required, Validators.email]],
-        // password: ['', [Validators.required, Validators.minLength(6)]],
-        // confirmPassword: ['', Validators.required],
-        // acceptTerms: [false, Validators.requiredTrue],
         title: [''],
         firstName: [''],
         lastName: [''],
@@ -38,12 +28,8 @@ export class RegisterComponent implements OnInit {
         confirmPassword: [''],
         acceptTerms: [false]
     });
-  
 }
-
 get firstName() { return this.registerForm.value('firstName'); }
-
-
 register(Formvalue: NgForm) {
     this.submitted = true;
   console.log(Formvalue);
@@ -57,20 +43,14 @@ register(Formvalue: NgForm) {
     else{
       this.toastr.success("Registered successfully!!");
        this.router.navigate(['/login']);
-
     }
   },rej=>{
     console.log(rej);
-    
      this.toastr.error("registration failed");
   });
-  
-
 }
 validateuser(){
-  
   const evalu = this.registerForm.value['email']
-
   this.apiserv.getData("user",'',evalu).subscribe((response:any)=>{
     console.log(response)
     if(response.docs.length >=1){
@@ -84,10 +64,8 @@ validateuser(){
     console.error(err)
   })
 }
-
 onReset() {
     this.submitted = false;
     this.registerForm.reset();
 }
-
 }

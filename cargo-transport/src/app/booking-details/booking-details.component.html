@@ -29,10 +29,10 @@
     <tbody>
       <tr *ngFor="let item of obj1">
         <td>
-          {{ item.departure }}
+          {{ item.departure["location"] }}
         </td>
         <td>
-          {{ item.destination }}
+          {{ item.destination["location"] }}
         </td>
         <td>
           {{ item.fullName }}

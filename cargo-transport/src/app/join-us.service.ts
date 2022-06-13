@@ -72,4 +72,9 @@ export class JoinUsService {
    const url = this.endpoint + "cargo-registration/_all_docs?include_docs=true" ;
    return this.http.post(url,data,this.httpOptions)
 }
+getAllDocsByKey(arrayKey:any){
+  const url = `${this.endpoint}cargo-registration/_all_docs?include_docs=true&keys=["`+arrayKey.join('","')+`"]`;
+  return this.http.get(url,this.httpOptions)
+
+}
 } 

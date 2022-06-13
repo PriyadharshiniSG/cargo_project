@@ -47,7 +47,7 @@ app.post("/book", function (request, response) {
     phonenumber: request.body.phonenumber,
     type: "customer-booking",
     status: "open",
-    user: request.body.user_id,
+    user: request.body.user,
   };
   db.cargo
     .insert(bookcargo)

@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavToolComponent } from './nav-tool/nav-tool.component';
 import { HomeComponent } from './home/home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { JoinUsComponent } from './join-us/join-us.component';
@@ -20,12 +19,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { CustomerStatusComponent } from './customer-status/customer-status.component';
 import { LocationComponent } from './location/location.component';
+import { ServicesComponent } from './services/services.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavToolComponent,
     HomeComponent,
-    AboutUsComponent,
     RegisterComponent,
     LoginComponent,
     JoinUsComponent,
@@ -35,7 +34,8 @@ import { LocationComponent } from './location/location.component';
     BookingDetailsComponent,
     SignupDetailsComponent,
     CustomerStatusComponent,
-    LocationComponent
+    LocationComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,

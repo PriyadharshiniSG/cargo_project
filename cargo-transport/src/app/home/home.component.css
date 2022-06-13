@@ -26,20 +26,7 @@
   font-family: 'Merriweather', serif;
 }
 
-/* h1 {
-  font-weight: 900;
-  font-size: 70px;
-  font-family: georgia,sans-serif;
-  color: rgba(0, 255, 255, 0.886);
-}
-span{
-  font-weight: 900;
-  text-align: center;
-}
 
-h3 {
-  font-weight: 300;
-} */
 
 .flap {
   width: 100%;
@@ -47,7 +34,7 @@ h3 {
 }
 .flap::before{
   position: absolute;
-  content: "Welcome to  ";
+  content: "Welcome to " " ";
   text-align: right;
   font-size: xx-large;
   height: 100%;
@@ -95,12 +82,12 @@ h3 {
   background: white;
 }
 
-#app {
+.app {
   z-index: 100;
 }
 
 
-#app {
+.app {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
@@ -133,6 +120,7 @@ body {
 }
   .title-inner {
     display: inline-block;
+  animation: inner-left 1s 1s ease both;
   }
 
 
@@ -169,10 +157,7 @@ body {
 }
 
 
-.title-inner {
-  display: inline-block;
-  animation: inner-left 1s 1s ease both;
-}
+
 
 .cafe-inner {
   display: inline-block;
@@ -188,10 +173,6 @@ body {
   animation: outer-left 1s 1s ease both;
 }
 
-
-  .cafe-inner {
-    display: inline-block;
-  }
 
 
 .mozart {

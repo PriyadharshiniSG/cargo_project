@@ -50,22 +50,6 @@ export class BookingDetailsComponent implements OnInit {
       console.log(rej);
     });
   }
-  filter(Formvalue: any){
-    
-    if(Formvalue.stats === "All"){
-      console.log("all",this.mydata1);
-      for(const element of this.mydata1.docs)
-      {
-        this.obj1 = element;
-        console.log("values in obj1",this.obj1);
-      }
-      this.obj1 = this.mydata1.docs;
-      return 
-    }
-    this.obj1 = this.mydata.filter((x:any)=>x.status === Formvalue['stats'])
-    console.log("filter:",this.obj1);
-  }
-  filterinData:any;
   fetchBookingData(){
     this.apis.getallBooking().subscribe(data=>{
       this.obj1 =[]

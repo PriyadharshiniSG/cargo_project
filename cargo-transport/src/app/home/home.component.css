@@ -82,9 +82,6 @@
   background: white;
 }
 
-.app {
-  z-index: 100;
-}
 
 
 .app {
@@ -98,6 +95,8 @@
   width: 100%;
   background: #1aaeb3db;
   color: black;
+  z-index: 100;
+
 }
 
 body {
@@ -117,6 +116,8 @@ body {
   font-size: 8vw;
   width: 100%;
   z-index: 2;
+  animation: outer-left 1s 1s ease both;
+
 }
   .title-inner {
     display: inline-block;
@@ -169,9 +170,6 @@ body {
   animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
 }
 
-.title {
-  animation: outer-left 1s 1s ease both;
-}
 
 
 

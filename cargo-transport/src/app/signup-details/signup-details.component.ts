@@ -10,7 +10,6 @@ export class SignupDetailsComponent implements OnInit {
   obj:any=[];
   constructor(private api: ApiserviceService) { }
   ngOnInit(): void {
-    localStorage.getItem("admin");     
     this.api.getallcustomers().subscribe(data=>{
       console.log('hmm',data)
       this.mydata = data;

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiserviceService } from '../apiservice.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -17,22 +17,31 @@ export class RegisterComponent implements OnInit {
   value: boolean = true;
   evalu:any;
   submitvals = false;
-  constructor(private formBuilder: FormBuilder, private api:ApiserviceService, private http:HttpClient, private router: Router, private toastr: ToastrService,private apiserv:JoinUsService) { }
+  constructor(private formBuilder: FormBuilder,private el:ElementRef, private api:ApiserviceService, private http:HttpClient, private router: Router, private toastr: ToastrService,private apiserv:JoinUsService) { }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-        title: [''],
-        firstName: [''],
-        lastName: [''],
-        email: [''],
-        password: [''],
-        confirmPassword: [''],
+      email: ['',[Validators.required]],
+        firstName: ['',[Validators.required]],
+        lastName: ['',[Validators.required]],
+        password: ['',[Validators.required]],
+        confirmPassword: ['',[Validators.required]],
         acceptTerms: [false]
     });
 }
-get firstName() { return this.registerForm.value('firstName'); }
-register(Formvalue: NgForm) {
+get email() { return this.registerForm.get('email')!; }
+get firstName() { return this.registerForm.get('firstName')!; }
+get lastName() { return this.registerForm.get('lastName')!; }
+get password() { return this.registerForm.get('password')!; }
+get confirmPassword() { return this.registerForm.get('confirmPassword')!; }
+get acceptTerms() { return this.registerForm.get('acceptTerms')!; }
+
+// if()
+register() {
     this.submitted = true;
-  console.log(Formvalue);
+  if(!this.registerForm.controls['email'].valid){
+    this.toastr.error('Please enter valid email')
+    return
+  }
   this.api.enroll(this.registerForm.value).subscribe((data) => {
     console.log(data);
     let obj:any =[]
@@ -55,11 +64,10 @@ validateuser(){
     console.log(response)
     if(response.docs.length >=1){
     this.toastr.error("email already exist");
-    this.submitvals =false
+    this.registerForm.controls['email'].reset();
+    this.el.nativeElement.querySelector('#email').focus()
     }
-    else{
-      this.submitvals =true
-    }
+   
   },err=>{
     console.error(err)
   })

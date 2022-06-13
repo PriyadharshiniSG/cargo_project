@@ -44,7 +44,7 @@ export class JoinUsService {
      typedData = {
       selector: {
         type: type,
-        user_id: id,
+        user: id,
       }
     };
   }

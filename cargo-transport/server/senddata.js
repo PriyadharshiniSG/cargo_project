@@ -14,7 +14,6 @@ app.use(
 app.use(bodyParser.json());
 app.post("/send", function (request, response) {
   let register1 = {
-    title: request.body.title,
     fname: request.body.firstName,
     lname: request.body.lastName,
     email: request.body.email,
@@ -48,7 +47,7 @@ app.post("/book", function (request, response) {
     phonenumber: request.body.phonenumber,
     type: "customer-booking",
     status: "open",
-    user_id: request.body.user_id,
+    user: request.body.user_id,
   };
   db.cargo
     .insert(bookcargo)
@@ -81,6 +80,24 @@ app.get("/getdata", (request, response) => {
       console.log("error", err);
     });
 });
+app.get("/getadmin", (request, response) => {
+  console.log("retreived......", request.params);
+  let obj = {
+    selector: {
+      type: "admin",
+    },
+  };
+  db.cargo
+    .find(obj)
+    .then((data) => {
+      response.send(data);
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log("error", err);
+    });
+});
+
 app.get("/getbookingdata", (request, response) => {
   console.log("retreived......", request.params);
   let obj = {

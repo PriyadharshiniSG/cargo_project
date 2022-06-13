@@ -1,3 +1,227 @@
-img{
+
+.container  {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 600px;
+  width: 1300px;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #15b9c2d3;
+  margin-top: 25px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  width: 120%;
+  transform: translatey(-50%);
+  text-align: justify;
+  color: black;
+  padding: 40px;
+  font-family: 'Merriweather', serif;
+}
+
+/* h1 {
+  font-weight: 900;
+  font-size: 70px;
+  font-family: georgia,sans-serif;
+  color: rgba(0, 255, 255, 0.886);
+}
+span{
+  font-weight: 900;
+  text-align: center;
+}
+
+h3 {
+  font-weight: 300;
+} */
+
+.flap {
+  width: 100%;
+  height: 100%;
+}
+.flap::before{
+  position: absolute;
+  content: "Welcome to  ";
+  text-align: right;
+  font-size: xx-large;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  background: url("../../assets/images/3714283.jpg");
+  background-position: -200px;
+  background-repeat: no-repeat;
+  transition: 1s;
+}
+
+.flap::after {
+  position: absolute;
+  content: "Chain-Sys Cargo";
+  font-size: xx-large;
+  height: 100%;
+  width: 50%;
+  right: 0;
+  background: url("../../assets/images/3714283.jpg");
+  background-position: -200px;
+  background-repeat: no-repeat;
+  transition: 1s;
+}
+
+.container:hover .flap::after {
+  transform: translatex(700px);
+}
+
+.container:hover .flap::before{
+  transform: translatex(-700px);
+}
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.iframely-embed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: white;
+}
+
+#app {
+  z-index: 100;
+}
+
+
+#app {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  padding-bottom: 4vmin;
+  height: 100vh;
+  margin-top: -5%;
+  margin-left: -5%;
+  width: 100%;
+  background: #1aaeb3db;
+  color: black;
+}
+
+body {
+  display: grid;
+  padding: 3vmin;
+  background: #e6ded7;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+.title {
+  padding-left: 1em;
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  font-family: "Prata", serif;
+  font-size: 8vw;
+  width: 100%;
+  z-index: 2;
+}
+  .title-inner {
+    display: inline-block;
+  }
+
+
+@keyframes text-clip {
+  from {
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes outer-left {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes inner-left {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.cafe,
+.mozart {
+  animation: outer-left 1s 1s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+
+.title-inner {
+  display: inline-block;
+  animation: inner-left 1s 1s ease both;
+}
+
+.cafe-inner {
+  display: inline-block;
+  animation: inner-left 1s 1s ease both,
+    text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.mozart-inner {
+  animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.title {
+  animation: outer-left 1s 1s ease both;
+}
+
+
+  .cafe-inner {
+    display: inline-block;
+  }
+
+
+.mozart {
+  display: inline-block;
+}
+
+.image {
+  grid-row: 1;
+  grid-column: 2;
+  margin-left: -2rem;
+  opacity: 0.7;
+
+  animation: image-in 1s cubic-bezier(0.5, 0, 0.1, 1) 2s backwards;
+
+  @keyframes image-in {
+    from {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    to {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+}
+  img {
+    display: block;
     width: 100%;
+    height: auto;
+  }
+
+
+body:active * {
+  animation: none !important;
 }

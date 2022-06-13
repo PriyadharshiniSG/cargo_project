@@ -29,7 +29,7 @@ export class BookingFormComponent implements OnInit {
       phonenumber: ['', [ Validators.required,
         Validators.pattern("^[0-9]*$"),
         Validators.minLength(10), Validators.maxLength(10)]],
-      user_id: localStorage.getItem("user")     
+      userid: localStorage.getItem("user")     
   });
   this.apiserv.getstatus("locate").subscribe(res=>{
     console.log(res);

@@ -12,6 +12,9 @@ export class ApiserviceService {
   retrieve(){
     return this.http.get('http://localhost:8000/getdata/');
   }
+  getadmin(){
+    return this.http.get('http://localhost:8000/getadmin/');
+  }
   bookcargo(formobject: any) { 
     return this.http.post('http://localhost:8000/book/',formobject);
   }

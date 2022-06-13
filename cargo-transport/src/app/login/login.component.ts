@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   mydata: any;
   records: any = [];
+  mydata1: any;
   constructor(private formBuilder: FormBuilder, private apiservice:ApiserviceService, private router: Router, private toastr:ToastrService ) { }
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -22,30 +23,38 @@ export class LoginComponent implements OnInit {
 get f() { return this.form.controls; }
   login(Formvalue:any)
   { 
-    if('admin.cargo@gmail.com' == Formvalue.email && 'admincargo' == Formvalue.password){
-      localStorage.setItem("admin",Formvalue._id);
+     this.apiservice.getadmin().subscribe((data1:any)=>{
+    console.log(data1)
+    this.mydata1=data1;
+      this.mydata1=this.mydata1.docs;
+      for(const j of this.mydata1){
+        this.records.push(j);
+    if(j.email === Formvalue.email && j.password === Formvalue.password){
+      localStorage.setItem("admin",j._id);
       this.toastr.success("Logged in Successfully");
       this.router.navigate(['/booking-details']);
     }
-    else{
+  }
+      },error=>{
+        console.log("error",error);
+      });
+  
     this.apiservice.retrieve().subscribe(data=>{
       this.mydata=data;
       this.mydata=this.mydata.docs;
       for(const i of this.mydata){
         this.records.push(i);  
-        if(i.email == Formvalue.email && i.password == Formvalue.password){
+        if(i.email === Formvalue.email && i.password === Formvalue.password){
           localStorage.setItem("user",i._id);
           this.toastr.success("Logged in Successfully");
           this.router.navigate(['/booking-form']);
         }  
-        
-      }
-      console.log(this.records);
+      } 
     },rej=>{
       this.toastr.error("Failed to Login");
       console.log('Error',rej);
     })
-      }
+      // }
     }
     }
     

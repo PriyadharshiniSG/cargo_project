@@ -30,6 +30,7 @@ export class CustomerStatusComponent implements OnInit {
           console.log(resp);
           const ldata:any = resp.rows.map((ele:any)=>ele.doc)
           this.obj.forEach((element:any) => {
+            console.log("elements",element);
             const location = ldata.filter((el:any)=>el['_id'] === element['departure'])[0]
             const destination = ldata.filter((el:any) =>el['_id'] === element['destination'])[0]
             element['departureData']=location

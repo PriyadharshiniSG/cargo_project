@@ -5,3 +5,7 @@
     font-size: xx-large;
     color: aliceblue;
 }
+.navbar{
+    position:fixed;
+    width: 100%;
+}

@@ -3,13 +3,9 @@
 padding: 0;
 font-family: "montserrat",sans-serif;
 }
-.join-us{
-padding: 40px 0;
-background: url('../../assets/images/c5.jpg') no-repeat center;
-background-size: cover;
-opacity: 0.9;
-}
+
 form{
+    margin-top: 100px;
     margin-left:390px;
     width:520px;
     background-color: transparent;
@@ -25,6 +21,7 @@ h1{
     text-shadow:2px 2px grey;
 }
 #contact-section h1{
+    margin-top: 100px;
 text-align: center;
 color: #ddd;
 }
@@ -58,7 +55,7 @@ resize: none;
 height: 120px;
 }
 ::placeholder{
-    color:white;
+    color: black;
 }
 .contact-form-btn{
 margin-left:10px;

@@ -10,7 +10,7 @@
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 0 20px 8px #15b9c2d3;
+  box-shadow: 0 0 20px 8px #b5b4b1;
   margin-top: 25px;
 }
 
@@ -93,7 +93,7 @@
   margin-top: -5%;
   margin-left: -5%;
   width: 100%;
-  background: #1aaeb3db;
+  background: #b5b4b1;
   color: black;
   z-index: 100;
 

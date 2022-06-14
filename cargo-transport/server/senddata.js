@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./couchDB");
 const app = express();
+app.disable("x-powered-by");
 const port = 8000;
 app.use(express.static("public"));
 app.use(bodyParser.json());

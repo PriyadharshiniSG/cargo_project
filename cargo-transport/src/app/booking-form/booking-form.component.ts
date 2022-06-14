@@ -23,7 +23,8 @@ export class BookingFormComponent implements OnInit {
   ngOnInit(): void {
     this.bookingForm = this.formBuilder.group({
       departure: ['', Validators.required],
-      destination: ['', Validators.required], 
+      destination: ['', Validators.required],
+      itemName: ['', Validators.required] ,
       fullName: ['', Validators.required],
       email: ['',[ Validators.required, Validators.email]],
       phonenumber: ['', [ Validators.required,

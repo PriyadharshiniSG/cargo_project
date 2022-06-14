@@ -33,10 +33,12 @@ get f() { return this.form.controls; }
       localStorage.setItem("admin",j._id);
       this.toastr.success("Logged in Successfully");
       this.router.navigate(['/booking-details']);
+      return
     }
   }
       },error=>{
         console.log("error",error);
+        this.toastr.success("Login Failed");
       });
   
     this.apiservice.retrieve().subscribe(data=>{
@@ -48,6 +50,7 @@ get f() { return this.form.controls; }
           localStorage.setItem("user",i._id);
           this.toastr.success("Logged in Successfully");
           this.router.navigate(['/booking-form']);
+          return
         }  
       } 
     },rej=>{

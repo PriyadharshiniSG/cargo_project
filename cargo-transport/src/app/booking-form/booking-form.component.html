@@ -6,12 +6,7 @@
     </div>
     <br />
     <div class="card-body">
-      <form
-        action="http://localhost:8000/postquery"
-        method="post"
-        [formGroup]="bookingForm"
-        (ngSubmit)="book(this.bookingForm.value)"
-      >
+      <form [formGroup]="bookingForm" (ngSubmit)="book(this.bookingForm.value)">
         <div class="form-group">
           <label>Departure Place</label>
           <select
@@ -53,6 +48,26 @@
           >
             <div *ngIf="f.departure.errors.required" class="alert alert-danger">
               Destination place is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Item Name</label>
+          <input
+            type="text"
+            formControlName="itemName"
+            class="form-control"
+            placeholder="Enter item name that you would like to transport through cargo"
+            [ngClass]="{
+              'is-invalid': f.itemName.touched && f.itemName.errors
+            }"
+          />
+          <div
+            *ngIf="f.itemName.touched && f.itemName.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.itemName.errors.required" class="alert alert-danger">
+              Item Name is required
             </div>
           </div>
         </div>

@@ -1,7 +1,14 @@
-<form [formGroup]="locationForm" (ngSubmit)="storing()">
-  <div class="form-group col-5">
-    <label>location</label>
-    <input type="location" formControlName="locate" class="form-control" />
-    <button class="btn btn-primary mr-1" type="submit">Submit</button>
+<app-adminnav></app-adminnav>
+<div class="card1">
+  <div class="text-center">
+    <h1>ADDING LOCATION</h1>
   </div>
-</form>
+  <br />
+  <form [formGroup]="locationForm" (ngSubmit)="storing()">
+    <div class="form-group col-5">
+      <label>location</label>
+      <input type="location" formControlName="locate" class="form-control" />
+      <button class="btn btn-primary mr-1" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

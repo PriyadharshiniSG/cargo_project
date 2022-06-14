@@ -6,12 +6,7 @@
     </div>
     <br />
     <div class="card-body">
-      <form
-        action="http://localhost:8000/postquery"
-        method="post"
-        [formGroup]="registerForm"
-        (ngSubmit)="register()"
-      >
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div class="form-row">
           <div class="form-group col">
             <label>Email</label>
@@ -24,7 +19,9 @@
               required
             />
             <div class="help-block text-danger" *ngIf="email.touched">
-              <span *ngIf="email.errors?.required"> Email is REQUIRED! </span>
+              <span *ngIf="email.errors?.required" class="alert alert-danger">
+                Email is REQUIRED!
+              </span>
             </div>
           </div>
         </div>
@@ -38,7 +35,10 @@
               required
             />
             <div class="help-block text-danger" *ngIf="firstName.touched">
-              <span *ngIf="firstName.errors?.required">
+              <span
+                *ngIf="firstName.errors?.required"
+                class="alert alert-danger"
+              >
                 First Name is REQUIRED!!!
               </span>
             </div>
@@ -53,7 +53,7 @@
             required
           />
           <div class="help-block text-danger" *ngIf="lastName.touched">
-            <span *ngIf="lastName.errors?.required">
+            <span *ngIf="lastName.errors?.required" class="alert alert-danger">
               last Name is REQUIRED!!!
             </span>
           </div>
@@ -68,7 +68,10 @@
               required
             />
             <div class="help-block text-danger" *ngIf="password.touched">
-              <span *ngIf="password.errors?.required">
+              <span
+                *ngIf="password.errors?.required"
+                class="alert alert-danger"
+              >
                 Password is REQUIRED!!!
               </span>
             </div>
@@ -83,7 +86,10 @@
             />
           </div>
           <div class="help-block text-danger" *ngIf="confirmPassword.touched">
-            <span *ngIf="confirmPassword.errors?.required">
+            <span
+              *ngIf="confirmPassword.errors?.required"
+              class="alert alert-danger"
+            >
               confirmPassword is REQUIRED!
             </span>
           </div>
@@ -100,7 +106,10 @@
             >Accept Terms & Conditions</label
           >
           <div class="help-block text-danger" *ngIf="acceptTerms.touched">
-            <span *ngIf="acceptTerms.errors?.required">
+            <span
+              *ngIf="acceptTerms.errors?.required"
+              class="alert alert-danger"
+            >
               Please tick the checkbox!!!
             </span>
           </div>

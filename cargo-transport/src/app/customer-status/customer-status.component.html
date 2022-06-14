@@ -13,6 +13,7 @@
         <th>Your Name</th>
         <th>Departure Place</th>
         <th>Destination Place</th>
+        <th>Item Name</th>
         <th>Tracking Status</th>
       </tr>
     </thead>
@@ -29,6 +30,9 @@
         </td>
         <td>
           {{ item.destinationData["location"] }}
+        </td>
+        <td>
+          {{ item.itemName }}
         </td>
         <td>
           {{ item.status }}

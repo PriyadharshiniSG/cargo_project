@@ -12,7 +12,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.post("/send", function (request, response) {
+app.post("/signupdata", function (request, response) {
   let register1 = {
     fname: request.body.firstName,
     lname: request.body.lastName,
@@ -37,10 +37,11 @@ app.post("/send", function (request, response) {
 
   console.log("Data Inserted..!!");
 });
-app.post("/book", function (request, response) {
+app.post("/bookcargo", function (request, response) {
   let bookcargo = {
     departure: request.body.departure,
     destination: request.body.destination,
+    itemName: request.body.itemName,
     fullName: request.body.fullName,
     email: request.body.email,
     password: request.body.password,

@@ -7,7 +7,7 @@ export class ApiserviceService {
   constructor(private http: HttpClient) { 
     }
   enroll(formobject: any) {
-    return this.http.post('http://localhost:8000/send/',formobject);
+    return this.http.post('http://localhost:8000/signupdata/',formobject);
   }
   retrieve(){
     return this.http.get('http://localhost:8000/getdata/');
@@ -16,7 +16,7 @@ export class ApiserviceService {
     return this.http.get('http://localhost:8000/getadmin/');
   }
   bookcargo(formobject: any) { 
-    return this.http.post('http://localhost:8000/book/',formobject);
+    return this.http.post('http://localhost:8000/bookcargo/',formobject);
   }
   getallBooking(){
     return this.http.get('http://localhost:8000/getbookingdata/');

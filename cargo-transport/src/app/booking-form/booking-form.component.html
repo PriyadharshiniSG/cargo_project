@@ -117,6 +117,8 @@
             <input
               type="phonenumber"
               formControlName="phonenumber"
+              minlength="10"
+              maxlength="10"
               class="form-control"
               [ngClass]="{
                 'is-invalid': f.phonenumber.touched && f.phonenumber.errors

@@ -12,12 +12,12 @@ export class LocationComponent implements OnInit {
   locationForm:any; 
   constructor(private fb:FormBuilder ,private http:HttpClient, private apiserv:JoinUsService,private toastr: ToastrService) { }
   record:any={
-    locate:''
+    location:''
   }
   ngOnInit(): void {
     localStorage.getItem("admin");     
     this.locationForm = this.fb.group({
-      locate: [this.record.locate]
+      location: [this.record.location]
    });
    console.log(this.locationForm);
   }
